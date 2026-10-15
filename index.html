@@ -220,6 +220,122 @@ body{background:#f4f2eb!important;color:var(--f253-ink)!important;font-family:'P
 @media(max-width:420px){.f253-bottom-nav{padding-left:2px;padding-right:2px}.f253-bottom-nav a{font-size:9px}.f253-bottom-nav i{font-size:17px}.max-w-2xl.mx-auto.min-h-screen section{padding-left:22px!important;padding-right:22px!important}}
 
     </style>
+
+    <!-- Layout kemas: setiap bahagian satu skrin dan kandungan dipusatkan -->
+    <style id="centered-page-layout">
+      html {
+        scroll-behavior: smooth;
+        scroll-snap-type: y proximity;
+        scroll-padding-bottom: 86px;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+      }
+
+      .max-w-2xl.mx-auto.min-h-screen {
+        width: 100%;
+        max-width: 640px !important;
+        margin: 0 auto !important;
+        min-height: 100vh;
+        min-height: 100svh;
+        box-sizing: border-box;
+      }
+
+      .max-w-2xl.mx-auto.min-h-screen > section {
+        box-sizing: border-box;
+        width: 100%;
+        min-height: 100vh;
+        min-height: 100svh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center !important;
+        text-align: center;
+        padding: clamp(30px, 6vh, 64px) clamp(20px, 6vw, 42px) 112px !important;
+        scroll-snap-align: start;
+        scroll-margin-top: 0;
+      }
+
+      .max-w-2xl.mx-auto.min-h-screen > section > * {
+        width: 100%;
+        max-width: 440px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        box-sizing: border-box;
+      }
+
+      .max-w-2xl.mx-auto.min-h-screen > section h1 {
+        font-size: clamp(2.25rem, 8vw, 3.5rem);
+        line-height: 1.08;
+      }
+
+      .max-w-2xl.mx-auto.min-h-screen > section h2 {
+        line-height: 1.15;
+        margin-bottom: 1.1rem;
+      }
+
+      .max-w-2xl.mx-auto.min-h-screen > section p {
+        line-height: 1.8;
+      }
+
+      .max-w-2xl.mx-auto.min-h-screen .glass-card {
+        border-radius: 18px;
+        box-shadow: 0 8px 26px rgba(80, 72, 53, .06);
+      }
+
+      .max-w-2xl.mx-auto.min-h-screen > footer {
+        box-sizing: border-box;
+        min-height: 42vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 42px 24px 110px;
+        text-align: center;
+      }
+
+      .f253-bottom-nav {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: min(100%, 640px) !important;
+        border-radius: 18px 18px 0 0;
+        padding-top: 12px !important;
+        box-sizing: border-box;
+      }
+
+      @media (min-width: 700px) {
+        body { padding: 24px 0 0; }
+        .max-w-2xl.mx-auto.min-h-screen {
+          border-radius: 20px;
+          overflow: hidden;
+        }
+        .max-w-2xl.mx-auto.min-h-screen > section {
+          min-height: min(100vh, 900px);
+          min-height: min(100svh, 900px);
+        }
+        .f253-bottom-nav {
+          bottom: 18px !important;
+          border-radius: 16px;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .max-w-2xl.mx-auto.min-h-screen > section {
+          padding-left: 18px !important;
+          padding-right: 18px !important;
+        }
+        .max-w-2xl.mx-auto.min-h-screen > section > * {
+          max-width: 100%;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+
 </head>
 <body class="bg-pattern text-slate-800 font-sans antialiased selection:bg-sage-200 selection:text-sage-800 invitation-locked">
 
