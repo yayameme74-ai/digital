@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
-
         function openWeddingInvitation() {
             const cover = document.getElementById('openCover');
             if (!cover) return;
@@ -60,338 +59,209 @@
     </script>
 
     <style>
-
-        /* Photographic ivory wax-seal cover */
         body.invitation-locked { overflow: hidden; }
         #openCover {
             position: fixed; inset: 0; z-index: 9999;
             display: flex; align-items: center; justify-content: center;
             padding: 0; background-color: #f7f3ed;
-            background-image: 
-
-
             background-size: cover; background-position: center center; background-repeat: no-repeat;
             transition: opacity .7s ease, visibility .7s ease;
         }
-        #openCover::before { content: none; }
         #openCover.cover-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-        /* The artwork already contains the realistic embossed BUKA seal; this invisible hit area makes it clickable. */
         .open-seal {
             position: absolute; left: 50%; top: 48%; transform: translate(-50%, -50%);
             width: min(30vw, 210px); height: min(30vw, 210px); min-width: 125px; min-height: 125px;
             border: 0; border-radius: 50%; background: transparent; box-shadow: none;
-            color: transparent; cursor: pointer; font-size: 0; padding: 0;
-        }
-        .open-seal strong, .open-seal small, .open-seal::before, .open-seal::after { display: none !important; }
-        .open-seal:hover { transform: translate(-50%, -50%); background: rgba(255,255,255,.04); box-shadow: none; }
-        .open-seal:focus-visible { outline: 2px solid rgba(145,132,105,.65); outline-offset: 3px; }
-        @media (max-width: 480px) {
-            #openCover { background-size: auto 90%; }
-            .open-seal { width: 34vw; height: 34vw; min-width: 125px; min-height: 125px; max-width: 165px; max-height: 165px; }
+            cursor: pointer;
         }
 
         .gold-gradient-text {
-            background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            background: linear-gradient(135deg, #bf953f 0%, #d4af37 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-        
-        .gold-border {
-            border-image: linear-gradient(135deg, #d4af37, #fcf6ba, #aa8c2c) 1;
         }
 
         .bg-pattern {
             background-color: #faf8f5;
-            background-image: radial-gradient(#e3eae3 0.8px, transparent 0.8px), radial-gradient(#e3eae3 0.8px, #faf8f5 0.8px);
+            background-image: radial-gradient(#e3eae3 1px, transparent 1px), radial-gradient(#e3eae3 1px, #faf8f5 1px);
             background-size: 32px 32px;
             background-position: 0 0, 16px 16px;
         }
 
-        @keyframes floatSlow {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(3deg); }
-        }
-
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.6; transform: scale(1); }
-            50% { opacity: 0.9; transform: scale(1.03); }
-        }
-
-        .animate-float {
-            animation: none !important;
-        }
-
-        .animate-pulse-glow {
-            animation: none !important;
-        }
-
-        /* Glassmorphism utility */
         .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04);
         }
 
-    </style>
-
-    <!-- Layout kemas: setiap bahagian satu skrin dan kandungan dipusatkan -->
-    <style id="centered-page-layout">
-      html {
-        scroll-behavior: smooth;
-        scroll-snap-type: y proximity;
-        scroll-padding-bottom: 86px;
-      }
-
-      body {
-        margin: 0;
-        min-width: 320px;
-      }
-
-      .max-w-2xl.mx-auto.min-h-screen {
-        width: 100%;
-        max-width: 640px !important;
-        margin: 0 auto !important;
-        min-height: 100vh;
-        min-height: 100svh;
-        box-sizing: border-box;
-      }
-
-      .max-w-2xl.mx-auto.min-h-screen > section {
-        box-sizing: border-box;
-        width: 100%;
-        min-height: 100vh;
-        min-height: 100svh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center !important;
-        text-align: center;
-        padding: clamp(30px, 6vh, 64px) clamp(20px, 6vw, 42px) 112px !important;
-        scroll-snap-align: start;
-        scroll-margin-top: 0;
-      }
-
-      .max-w-2xl.mx-auto.min-h-screen > section > * {
-        width: 100%;
-        max-width: 440px;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        box-sizing: border-box;
-      }
-
-      .max-w-2xl.mx-auto.min-h-screen > section h1 {
-        font-size: clamp(2.25rem, 8vw, 3.5rem);
-        line-height: 1.08;
-      }
-
-      .max-w-2xl.mx-auto.min-h-screen > section h2 {
-        line-height: 1.15;
-        margin-bottom: 1.1rem;
-      }
-
-      .max-w-2xl.mx-auto.min-h-screen > section p {
-        line-height: 1.8;
-      }
-
-      .max-w-2xl.mx-auto.min-h-screen .glass-card {
-        border-radius: 18px;
-        box-shadow: 0 8px 26px rgba(80, 72, 53, .06);
-      }
-
-      .max-w-2xl.mx-auto.min-h-screen > footer {
-        box-sizing: border-box;
-        min-height: 42vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 42px 24px 110px;
-        text-align: center;
-      }
-
-      .f253-bottom-nav {
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        width: min(100%, 640px) !important;
-        border-radius: 18px 18px 0 0;
-        padding-top: 12px !important;
-        box-sizing: border-box;
-      }
-
-      @media (min-width: 700px) {
-        body { padding: 24px 0 0; }
-        .max-w-2xl.mx-auto.min-h-screen {
-          border-radius: 20px;
-          overflow: hidden;
+        /* Floral Corner Decoration Utilities */
+        .floral-corner-tl {
+            position: absolute; top: 0; left: 0; width: 90px; height: 90px;
+            background: radial-gradient(circle at top left, rgba(122, 158, 127, 0.25) 0%, rgba(234, 175, 176, 0.15) 50%, transparent 70%);
+            border-bottom-right-radius: 100%; pointer-events: none;
         }
-        .max-w-2xl.mx-auto.min-h-screen > section {
-          min-height: min(100vh, 900px);
-          min-height: min(100svh, 900px);
+        .floral-corner-tr {
+            position: absolute; top: 0; right: 0; width: 90px; height: 90px;
+            background: radial-gradient(circle at top right, rgba(122, 158, 127, 0.25) 0%, rgba(234, 175, 176, 0.15) 50%, transparent 70%);
+            border-bottom-left-radius: 100%; pointer-events: none;
         }
+        .floral-corner-bl {
+            position: absolute; bottom: 0; left: 0; width: 90px; height: 90px;
+            background: radial-gradient(circle at bottom left, rgba(122, 158, 127, 0.25) 0%, rgba(234, 175, 176, 0.15) 50%, transparent 70%);
+            border-top-right-radius: 100%; pointer-events: none;
+        }
+        .floral-corner-br {
+            position: absolute; bottom: 0; right: 0; width: 90px; height: 90px;
+            background: radial-gradient(circle at bottom right, rgba(122, 158, 127, 0.25) 0%, rgba(234, 175, 176, 0.15) 50%, transparent 70%);
+            border-top-left-radius: 100%; pointer-events: none;
+        }
+
         .f253-bottom-nav {
-          bottom: 18px !important;
-          border-radius: 16px;
+            position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+            width: min(100%, 640px); background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px); border-top: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex; justify-content: space-around; padding: 10px 0; z-index: 40;
+            box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
         }
-      }
-
-      @media (max-width: 420px) {
-        .max-w-2xl.mx-auto.min-h-screen > section {
-          padding-left: 18px !important;
-          padding-right: 18px !important;
+        .f253-bottom-nav a {
+            display: flex; flex-direction: column; align-items: center; font-size: 11px; color: #3a503d; font-weight: 500;
         }
-        .max-w-2xl.mx-auto.min-h-screen > section > * {
-          max-width: 100%;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        html { scroll-behavior: auto; }
-      }
+        .f253-bottom-nav i { font-size: 16px; margin-bottom: 2px; color: #aa8c2c; }
     </style>
-
 </head>
-<body class="bg-pattern text-slate-800 font-sans antialiased selection:bg-sage-200 selection:text-sage-800 invitation-locked">
+<body class="bg-pattern text-slate-800 font-sans antialiased selection:bg-sage-200 selection:text-sage-800 invitation-locked pb-16">
 
-
-    <!-- Opening overlay: blurred invitation with a single OPEN seal -->
-    <div id="openCover" role="dialog" aria-label="Tekan OPEN untuk melihat kad kahwin">
+    <!-- Opening overlay -->
+    <div id="openCover" role="dialog" aria-label="Tekan untuk melihat kad kahwin">
         <button class="open-seal" type="button" onclick="openWeddingInvitation()" aria-label="Buka kad kahwin"></button>
     </div>
 
     <!-- Audio Floating Controller -->
-    <div class="fixed bottom-5 right-5 z-50">
-        <button id="musicToggleBtn" onclick="toggleMusic()" class="flex items-center gap-2 bg-white/90 hover:bg-white text-sage-800 px-4 py-3 rounded-full shadow-lg border border-gold-400/40 transition-all transform hover:scale-105 active:scale-95 group">
+    <div class="fixed top-4 right-4 z-50">
+        <button id="musicToggleBtn" onclick="toggleMusic()" class="flex items-center gap-2 bg-white/90 hover:bg-white text-sage-800 px-3 py-2 rounded-full shadow-md border border-gold-400/40 transition-all text-xs">
             <i id="musicIcon" class="fa-solid fa-music text-gold-600 animate-spin" style="animation-duration: 4s;"></i>
-            <span id="musicText" class="text-xs font-medium tracking-wide">Muzik: On</span>
+            <span id="musicText" class="font-medium">Muzik</span>
         </button>
     </div>
 
     <!-- Main Container -->
-    <div class="max-w-2xl mx-auto min-h-screen shadow-2xl bg-white/60 relative overflow-hidden my-0 md:my-6 md:rounded-3xl border border-sage-100">
+    <div class="max-w-xl mx-auto shadow-2xl bg-white/90 relative overflow-hidden my-0 md:my-6 md:rounded-3xl border border-sage-200">
+
+        <!-- Hiasan Sudut Bunga (Floral Corner Accents) -->
+        <div class="floral-corner-tl"></div>
+        <div class="floral-corner-tr"></div>
 
         <!-- SECTION 1: HERO / COVER -->
-        <section class="relative min-h-screen flex flex-col items-center justify-between p-6 text-center overflow-hidden border-b border-sage-100/60">
-            <!-- Decorative Corner SVG Elements -->
-            <div class="absolute top-0 left-0 w-32 h-32 opacity-40 pointer-events-none animate-float">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 0C30 0 60 10 70 40C80 70 100 100 100 100H0V0Z" fill="#7a9e7f"/>
-                    <path d="M0 0C20 15 40 35 45 60C50 85 20 100 0 100V0Z" fill="#eaafb0" opacity="0.6"/>
-                </svg>
-            </div>
-            <div class="absolute top-0 right-0 w-32 h-32 opacity-40 pointer-events-none transform scale-x-[-1] animate-float" style="animation-delay: -2s;">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 0C30 0 60 10 70 40C80 70 100 100 100 100H0V0Z" fill="#7a9e7f"/>
-                    <path d="M0 0C20 15 40 35 45 60C50 85 20 100 0 100V0Z" fill="#eaafb0" opacity="0.6"/>
-                </svg>
+        <section class="relative pt-12 pb-8 px-6 text-center border-b border-sage-100">
+            <div class="space-y-3">
+                <span class="inline-flex items-center gap-2 px-3.5 py-1 bg-sage-100/80 text-sage-800 text-[10px] uppercase tracking-[0.25em] font-semibold rounded-full border border-sage-200">
+                    <i class="fa-solid fa-seedling text-gold-600 text-[9px]"></i> Walimatulurus
+                </span>
+                <div class="text-3xl font-serif text-gold-600 tracking-wider py-2">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+                <p class="text-xs italic text-slate-500 max-w-sm mx-auto leading-relaxed">
+                    "Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang"
+                </p>
             </div>
 
-            <!-- Top Header & Islamic Calligraphy -->
-            <div class="pt-8 space-y-3 z-10">
-                <p class="text-xs uppercase tracking-[0.3em] text-sage-600 font-semibold">Walimatulurus</p>
-                <div class="text-2xl font-serif text-gold-600 tracking-wider">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
-                <p class="text-xs italic text-slate-500 max-w-sm mx-auto leading-relaxed px-4">
-                    "Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang"</p>
-            </div>
-
-            <!-- Quranic Quote -->
-            <div class="z-10 max-w-md mx-auto glass-card p-5 rounded-2xl shadow-sm border border-gold-300/30 mb-6">
-                <p class="font-serif text-sm italic text-slate-700 leading-relaxed mb-2">
+            <!-- Quranic Quote Card denganikon bunga kecil -->
+            <div class="mt-6 glass-card p-5 rounded-2xl border border-gold-300/40 relative">
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold-400/20 text-gold-600 px-3 py-0.5 rounded-full text-[10px] tracking-widest uppercase font-semibold">
+                    <i class="fa-solid fa-spa text-[9px] mr-1"></i> Syukur Ilahi
+                </div>
+                <p class="font-serif text-xs italic text-slate-700 leading-relaxed mb-2 mt-1">
                     "Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu isteri-isteri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang..."
                 </p>
-                <span class="text-xs text-sage-600 font-semibold tracking-wider uppercase">— Surah Ar-Rum : 21</span>
+                <span class="text-[10px] text-sage-600 font-semibold tracking-wider uppercase">— Surah Ar-Rum : 21</span>
             </div>
         </section>
 
-			
-		<!-- Parents Names & Invitation Text -->
-		<div class="w-full max-w-md mx-auto text-center flex flex-col items-center">
+        <!-- SECTION 2: PARENTS & BRIDE/GROOM -->
+        <section class="relative py-8 px-6 text-center border-b border-sage-100 bg-white/40">
+            <p class="text-[11px] font-semibold text-slate-500 uppercase tracking-widest mb-3">
+                ASSALAMUALAIKUM WBT & SALAM SEJAHTERA
+            </p>
 
-               <p class="w-full text-xs text-slate-1000 uppercase tracking-widest mb-4 text-center">
-      				  ASSALAMUALAIKUM WBT & SALAM SEJAHTERA
-    		   </p>
-
-               <p class="w-full font-serif text-lg font-semibold uppercase text-slate-700 leading-relaxed text-center">
-                      ABDUL RAHIM
-               </p>
-
-   			   <p class="w-full font-serif text-lg font-semibold text-slate-700 text-center">
-  				      &
- 			   </p>
-
-               <p class="w-full font-serif text-lg font-semibold uppercase text-slate-700 leading-relaxed text-center">
-                     AMINAH
-               </p>
-
-               <p class="w-full font-sans text-xs text-slate-600 leading-relaxed text-center my-4">
-       				 Dengan penuh kesyukuran ke hadrat Ilahi,<br>
-        			 kami mempersembilkan<br>
-        	         Dato’/Datin/Dr/Tuan/Puan/Encik/Cik ke<br>
-        		     walimatulurus anakanda kesayangan kami
+            <div class="space-y-1 my-4">
+                <p class="font-serif text-base font-bold uppercase text-slate-800 tracking-wide">
+                    ABDUL RAHIM
                 </p>
+                <p class="font-serif italic text-sage-600 text-sm font-bold">&</p>
+                <p class="font-serif text-base font-bold uppercase text-slate-800 tracking-wide">
+                    AMINAH
+                </p>
+            </div>
 
-		<div class="w-full max-w-md mx-auto text-center flex flex-col items-center">
-				<h1 class="font-cursive text-4xl md:text-5xl gold-gradient-text drop-shadow-sm py-2">
+            <p class="font-sans text-xs text-slate-600 leading-relaxed max-w-sm mx-auto my-4">
+                Dengan penuh kesyukuran ke hadrat Ilahi, kami mempersembahkan<br>
+                Dato’ / Datin / Dr / Tuan / Puan / Encik / Cik ke<br>
+                walimatulurus anakanda kesayangan kami
+            </p>
+
+            <!-- Nama Pengantin Kemas 1 Line dalam Kad Motif Floral -->
+            <div class="w-full max-w-md mx-auto text-center flex flex-col items-center my-6 py-5 px-4 glass-card rounded-2xl border border-gold-400/40 relative shadow-sm">
+                <div class="absolute top-2 text-gold-500/60 text-xs"><i class="fa-solid fa-spa"></i></div>
+                <h1 class="font-cursive text-3xl md:text-4xl gold-gradient-text drop-shadow-sm py-1 whitespace-nowrap">
                     Shahira Erna
                 </h1>
-                <div class="font-serif italic text-2xl text-sage-600 my-1">&</div>
-                <h1 class="font-cursive text-64xl md:text-5xl gold-gradient-text drop-shadow-sm py-2">
+                <div class="font-serif italic text-xl text-sage-600 my-1">&</div>
+                <h1 class="font-cursive text-3xl md:text-4xl gold-gradient-text drop-shadow-sm py-1 whitespace-nowrap">
                     Aiman Mustaqim
                 </h1>
+                <div class="absolute bottom-2 text-gold-500/60 text-xs"><i class="fa-solid fa-spa"></i></div>
             </div>
-		</section> 
-		
-<!-- SECTION 3: EVENT DETAILS -->
-        <section id="event" class="py-4 px-6 text-center border-b border-sage-100">
-            <div class="max-w-md mx-auto space-y-8">
-                <div class="space-y-2">
-                    <span class="text-xs font-semibold uppercase tracking-widest text-gold-600">Maklumat Majlis</span>
-                    <h2 class="font-serif text-3xl font-bold text-slate-800">Tarikh & Masa</h2>
+        </section> 
+
+        <!-- SECTION 3: EVENT DETAILS -->
+        <section id="event" class="relative py-8 px-6 text-center border-b border-sage-100">
+            <div class="max-w-md mx-auto space-y-6">
+                <div>
+                    <span class="text-[10px] font-semibold uppercase tracking-widest text-gold-600 bg-gold-300/20 px-3 py-1 rounded-full"><i class="fa-solid fa-calendar-days mr-1"></i> Maklumat Majlis</span>
+                    <h2 class="font-serif text-2xl font-bold text-slate-800 mt-2">Tarikh & Masa</h2>
                 </div>
 
                 <!-- Event Details Card -->
-                <div class="glass-card rounded-2xl p-6 shadow-sm space-y-6 relative border border-gold-300/30">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 divide-y md:divide-y-0 md:divide-x divide-sage-200">
+                <div class="glass-card rounded-2xl p-6 space-y-5 border border-gold-300/30">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 divide-y sm:divide-y-0 sm:divide-x divide-sage-200">
                         <!-- Date -->
-                        <div class="pt-2 md:pt-0 space-y-1">
-                            <i class="fa-regular fa-calendar text-gold-600 text-xl mb-1"></i>
-                            <h3 class="font-serif font-bold text-slate-800">Tarikh</h3>
-                            <p class="text-sm text-slate-600">Sabtu, 2 January 2027</p>
-                            <p class="text-xs text-slate-400">24 Rejab 1448H</p>
+                        <div class="pt-2 sm:pt-0 space-y-1">
+                            <i class="fa-regular fa-calendar text-gold-600 text-lg mb-1"></i>
+                            <h3 class="font-serif font-bold text-slate-800 text-sm">Tarikh</h3>
+                            <p class="text-xs font-semibold text-slate-700">Sabtu, 2 Januari 2027</p>
+                            <p class="text-[10px] text-slate-400">24 Rejab 1448H</p>
                         </div>
                         <!-- Time -->
-                        <div class="pt-4 md:pt-0 space-y-1">
-                            <i class="fa-regular fa-clock text-gold-600 text-xl mb-1"></i>
-                            <h3 class="font-serif font-bold text-slate-800">Masa</h3>
-                            <p class="text-sm text-slate-600">11:00 Pagi - 4:00 Petang</p>
-                            <p class="text-xs text-slate-400">Ketibaan Pengantin: 12:30 PM</p>
+                        <div class="pt-3 sm:pt-0 space-y-1">
+                            <i class="fa-regular fa-clock text-gold-600 text-lg mb-1"></i>
+                            <h3 class="font-serif font-bold text-slate-800 text-sm">Masa</h3>
+                            <p class="text-xs font-semibold text-slate-700">11:00 AM - 4:00 PM</p>
+                            <p class="text-[10px] text-slate-400">Ketibaan Pengantin: 12:30 PM</p>
                         </div>
                     </div>
 
                     <hr class="border-sage-100">
 
                     <!-- Venue -->
-                    <div class="space-y-2">
-                        <i class="fa-solid fa-location-dot text-gold-600 text-2xl"></i>
-                        <h3 class="font-serif font-bold text-lg text-slate-800">Lokasi Majlis</h3>
-                        <p class="text-sm font-semibold text-slate-700">Dewan Kejora Bandar Tenggara</p>
-                        <p class="text-xs text-slate-500 leading-relaxed px-4">
-                            Bandar Tenggara, Kulai, Johor Bahru
-                        </p>
+                    <div class="space-y-1">
+                        <i class="fa-solid fa-location-dot text-gold-600 text-xl"></i>
+                        <h3 class="font-serif font-bold text-base text-slate-800">Lokasi Majlis</h3>
+                        <p class="text-xs font-bold text-slate-700">Dewan Kejora Bandar Tenggara</p>
+                        <p class="text-[11px] text-slate-500">Bandar Tenggara, Kulai, Johor Bahru</p>
                     </div>
 
                     <!-- Navigation Action Buttons -->
                     <div class="pt-2 flex flex-wrap gap-2 justify-center">
-                        <a href="https://waze.com/ul?q=Dewan+Seri+Endon+Putrajaya" target="_blank" rel="noopener" class="flex-1 min-w-[130px] flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white text-xs font-semibold py-2.5 px-3 rounded-xl shadow-sm transition-transform active:scale-95">
-                            <i class="fa-fab fa-waze text-base"></i>
+                        <a href="https://waze.com/ul?q=Dewan+Kejora+Bandar+Tenggara" target="_blank" rel="noopener" class="flex-1 min-w-[120px] flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white text-xs font-semibold py-2 px-3 rounded-xl shadow-sm transition-transform active:scale-95">
+                            <i class="fa-brands fa-waze text-sm"></i>
                             <span>Waze</span>
                         </a>
-                        <a href="https://maps.google.com/?q=Dewan+Seri+Endon+Putrajaya" target="_blank" rel="noopener" class="flex-1 min-w-[130px] flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold py-2.5 px-3 rounded-xl shadow-sm transition-transform active:scale-95">
-                            <i class="fa-solid fa-map-location-dot text-base"></i>
+                        <a href="https://maps.google.com/?q=Dewan+Kejora+Bandar+Tenggara" target="_blank" rel="noopener" class="flex-1 min-w-[120px] flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold py-2 px-3 rounded-xl shadow-sm transition-transform active:scale-95">
+                            <i class="fa-solid fa-map-location-dot text-sm"></i>
                             <span>Google Maps</span>
                         </a>
-                        <button onclick="addToCalendar()" class="w-full flex items-center justify-center gap-2 bg-sage-800 hover:bg-sage-600 text-white text-xs font-semibold py-2.5 px-4 rounded-xl shadow-sm transition-transform active:scale-95 mt-1">
-                            <i class="fa-regular fa-calendar-plus text-base"></i>
+                        <button onclick="addToCalendar()" class="w-full flex items-center justify-center gap-2 bg-sage-800 hover:bg-sage-600 text-white text-xs font-semibold py-2 px-4 rounded-xl shadow-sm transition-transform active:scale-95 mt-1">
+                            <i class="fa-regular fa-calendar-plus text-sm"></i>
                             <span>Simpan Ke Kalendar (.ics)</span>
                         </button>
                     </div>
@@ -400,44 +270,33 @@
         </section>
 
         <!-- SECTION 4: TENTATIF MAJLIS -->
-        <section id="wishes" class="py-4 px-6 bg-sage-50/40 border-b border-sage-100">
-            <div class="max-w-md mx-auto text-center space-y-6">
+        <section id="wishes" class="relative py-8 px-6 bg-sage-50/50 border-b border-sage-100">
+            <div class="max-w-md mx-auto text-center space-y-4">
                 <div>
-                    <span class="text-xs font-semibold uppercase tracking-widest text-gold-600">Atur Cara</span>
-                    <h2 class="font-serif text-3xl font-bold text-slate-800">Tentatif Majlis</h2>
+                    <span class="text-[10px] font-semibold uppercase tracking-widest text-gold-600 bg-gold-300/20 px-3 py-1 rounded-full"><i class="fa-solid fa-list-check mr-1"></i> Atur Cara</span>
+                    <h2 class="font-serif text-2xl font-bold text-slate-800 mt-2">Tentatif Majlis</h2>
                 </div>
 
                 <!-- Timeline Container -->
-                <div class="relative border-l-2 border-gold-400/40 ml-4 md:ml-8 text-left space-y-8 pl-6 my-6">
-                    <!-- Timeline Item 1 -->
-                    <div class="relative group">
+                <div class="relative border-l-2 border-gold-400/40 ml-4 sm:ml-8 text-left space-y-6 pl-6 my-4">
+                    <div class="relative">
                         <div class="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-gold-500 border-4 border-white shadow-sm"></div>
-                        <span class="text-xs font-bold text-gold-600 bg-gold-300/20 px-2 py-0.5 rounded-md">11:00 AM</span>
-                        <h4 class="font-serif font-bold text-slate-800 text-base mt-1">Jamuan Makan Bermula</h4>
+                        <span class="text-[10px] font-bold text-gold-600 bg-gold-300/20 px-2 py-0.5 rounded-md">11:00 AM</span>
+                        <h4 class="font-serif font-bold text-slate-800 text-sm mt-1">Jamuan Makan Bermula</h4>
                         <p class="text-xs text-slate-500">Ketibaan tetamu jemputan & santapan mesra.</p>
                     </div>
 
-                    <!-- Timeline Item 2 -->
-                    <div class="relative group">
+                    <div class="relative">
                         <div class="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-sage-600 border-4 border-white shadow-sm"></div>
-                        <span class="text-xs font-bold text-sage-600 bg-sage-100 px-2 py-0.5 rounded-md">12:30 PM</span>
-                        <h4 class="font-serif font-bold text-slate-800 text-base mt-1">Ketibaan Raja Sehari</h4>
-                        <p class="text-xs text-slate-500">Acaras bersanding, makan beradab & memotong kek.</p>
+                        <span class="text-[10px] font-bold text-sage-600 bg-sage-100 px-2 py-0.5 rounded-md">12:30 PM</span>
+                        <h4 class="font-serif font-bold text-slate-800 text-sm mt-1">Ketibaan Raja Sehari</h4>
+                        <p class="text-xs text-slate-500">Acara bersanding, makan beradab & potong kek.</p>
                     </div>
 
-                    <!-- Timeline Item 3 -->
-                    <div class="relative group">
+                    <div class="relative">
                         <div class="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-slate-400 border-4 border-white shadow-sm"></div>
-                        <span class="text-xs font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">02:00 PM</span>
-                        <h4 class="font-serif font-bold text-slate-800 text-base mt-1">Bersurai</h4>
-                        <p class="text-xs text-slate-500">Sesi Bergambar bersama keluarga & tetamu.</p>
-                    </div>
-                    
-                    <!-- Timeline Item 4 -->
-                    <div class="relative group">
-                        <div class="absolute -left-[31px] top-0 w-4 h-4 rounded-full bg-slate-400 border-4 border-white shadow-sm"></div>
-                        <span class="text-xs font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">04:00 PM</span>
-                        <h4 class="font-serif font-bold text-slate-800 text-base mt-1">Bersurai</h4>
+                        <span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">04:00 PM</span>
+                        <h4 class="font-serif font-bold text-slate-800 text-sm mt-1">Bersurai</h4>
                         <p class="text-xs text-slate-500">Majlis dijangka selesai & ucapan terima kasih.</p>
                     </div>
                 </div>
@@ -445,49 +304,44 @@
         </section>
 
         <!-- SECTION 5: INTERACTIVE RSVP FORM -->
-        <section id="rsvp" class="py-12 px-6 border-b border-sage-100">
-            <div class="max-w-md mx-auto text-center space-y-6">
+        <section id="rsvp" class="relative py-8 px-6 border-b border-sage-100">
+            <div class="max-w-md mx-auto text-center space-y-4">
                 <div>
-                    <span class="text-xs font-semibold uppercase tracking-widest text-gold-600">Pengesahan Kehadiran</span>
-                    <h2 class="font-serif text-3xl font-bold text-slate-800">Borang RSVP</h2>
+                    <span class="text-[10px] font-semibold uppercase tracking-widest text-gold-600 bg-gold-300/20 px-3 py-1 rounded-full"><i class="fa-solid fa-envelope-open-text mr-1"></i> Kehadiran</span>
+                    <h2 class="font-serif text-2xl font-bold text-slate-800 mt-2">Borang RSVP</h2>
                     <p class="text-xs text-slate-500 mt-1">Sila sahkan kehadiran anda sebelum 1 Disember 2026</p>
                 </div>
 
-                <form id="rsvpForm" onsubmit="handleRSVP(event)" class="glass-card p-6 rounded-2xl shadow-sm text-left space-y-4 border border-gold-300/30">
-                    <!-- Guest Name -->
+                <form id="rsvpForm" onsubmit="handleRSVP(event)" class="glass-card p-5 rounded-2xl text-left space-y-3 border border-gold-300/30">
                     <div>
-                        <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Nama Penuh *</label>
-                        <input type="text" id="rsvpName" required placeholder="Contoh: Ahmad Razak" class="w-full px-3 py-2 text-sm rounded-xl border border-sage-200 focus:outline-none focus:ring-2 focus:ring-gold-400/50 bg-white">
+                        <label class="block text-[10px] font-semibold text-slate-700 uppercase tracking-wider mb-1">Nama Penuh *</label>
+                        <input type="text" id="rsvpName" required placeholder="Contoh: Ahmad Razak" class="w-full px-3 py-2 text-xs rounded-xl border border-sage-200 focus:outline-none focus:ring-2 focus:ring-gold-400/50 bg-white">
                     </div>
 
-                    <!-- Phone Number -->
                     <div>
-                        <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Nombor Telefon *</label>
-                        <input type="tel" id="rsvpPhone" required placeholder="Contoh: 0123456789" class="w-full px-3 py-2 text-sm rounded-xl border border-sage-200 focus:outline-none focus:ring-2 focus:ring-gold-400/50 bg-white">
+                        <label class="block text-[10px] font-semibold text-slate-700 uppercase tracking-wider mb-1">Nombor Telefon *</label>
+                        <input type="tel" id="rsvpPhone" required placeholder="Contoh: 0123456789" class="w-full px-3 py-2 text-xs rounded-xl border border-sage-200 focus:outline-none focus:ring-2 focus:ring-gold-400/50 bg-white">
                     </div>
 
-                    <!-- Attendance Status -->
                     <div>
-                        <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Status Kehadiran *</label>
-                        <select id="rsvpStatus" onchange="togglePaxInput()" class="w-full px-3 py-2 text-sm rounded-xl border border-sage-200 focus:outline-none focus:ring-2 focus:ring-gold-400/50 bg-white">
+                        <label class="block text-[10px] font-semibold text-slate-700 uppercase tracking-wider mb-1">Status Kehadiran *</label>
+                        <select id="rsvpStatus" onchange="togglePaxInput()" class="w-full px-3 py-2 text-xs rounded-xl border border-sage-200 focus:outline-none focus:ring-2 focus:ring-gold-400/50 bg-white">
                             <option value="Hadir">Hadir</option>
                             <option value="Tidak Hadir">Tidak Hadir</option>
                         </select>
                     </div>
 
-                    <!-- Number of Pax -->
                     <div id="paxContainer">
-                        <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Jumlah Kehadiran (Orang)</label>
-                        <input type="number" id="rsvpPax" min="1" max="10" value="1" class="w-full px-3 py-2 text-sm rounded-xl border border-sage-200 focus:outline-none focus:ring-2 focus:ring-gold-400/50 bg-white">
+                        <label class="block text-[10px] font-semibold text-slate-700 uppercase tracking-wider mb-1">Jumlah Kehadiran (Orang)</label>
+                        <input type="number" id="rsvpPax" min="1" max="10" value="1" class="w-full px-3 py-2 text-xs rounded-xl border border-sage-200 focus:outline-none focus:ring-2 focus:ring-gold-400/50 bg-white">
                     </div>
 
-                    <!-- Submit Buttons -->
                     <div class="pt-2 space-y-2">
-                        <button type="submit" class="w-full bg-sage-800 hover:bg-sage-600 text-white font-semibold py-3 px-4 rounded-xl shadow-md transition-transform active:scale-98 text-xs uppercase tracking-wider flex items-center justify-center gap-2">
+                        <button type="submit" class="w-full bg-sage-800 hover:bg-sage-600 text-white font-semibold py-2.5 px-4 rounded-xl shadow-md transition-transform active:scale-95 text-xs uppercase tracking-wider flex items-center justify-center gap-2">
                             <i class="fa-solid fa-paper-plane"></i>
                             <span>Hantar RSVP</span>
                         </button>
-                        <button type="button" onclick="sendRSVPWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 px-4 rounded-xl shadow-sm transition-transform active:scale-98 text-xs uppercase tracking-wider flex items-center justify-center gap-2">
+                        <button type="button" onclick="sendRSVPWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-xl shadow-sm transition-transform active:scale-95 text-xs uppercase tracking-wider flex items-center justify-center gap-2">
                             <i class="fa-brands fa-whatsapp text-sm"></i>
                             <span>Hantar RSVP via WhatsApp</span>
                         </button>
@@ -495,53 +349,52 @@
                 </form>
             </div>
         </section>
-<!-- SECTION 7: CONTACT / HUBUNGI KAMI -->
-        <section id="contact" class="py-12 px-6 border-b border-sage-100">
-            <div class="max-w-md mx-auto text-center space-y-6">
+
+        <!-- SECTION 6: HUBUNGI KAMI -->
+        <section id="contact" class="relative py-8 px-6 border-b border-sage-100">
+            <div class="max-w-md mx-auto text-center space-y-4">
                 <div>
-                    <span class="text-xs font-semibold uppercase tracking-widest text-gold-600">Hubungi Kami</span>
-                    <h2 class="font-serif text-3xl font-bold text-slate-800">Pertanyaan & Bantuan</h2>
-                    <p class="text-xs text-slate-500 mt-1">Sila hubungi wakil tuan rumah jika ada sebarang soalan</p>
+                    <span class="text-[10px] font-semibold uppercase tracking-widest text-gold-600 bg-gold-300/20 px-3 py-1 rounded-full"><i class="fa-solid fa-phone-volume mr-1"></i> Hubungi Kami</span>
+                    <h2 class="font-serif text-2xl font-bold text-slate-800 mt-2">Pertanyaan & Bantuan</h2>
                 </div>
 
-                <!-- Contacts Grid -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- Contact 1: Abdul Rahim -->
-                    <div class="glass-card p-4 rounded-2xl border border-gold-300/30 flex flex-col justify-between space-y-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <!-- Contact 1 -->
+                    <div class="glass-card p-4 rounded-2xl border border-gold-300/30 flex flex-col justify-between space-y-2">
                         <div>
-                            <div class="w-10 h-10 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center mx-auto mb-2 font-serif font-bold">
+                            <div class="w-9 h-9 rounded-full bg-sage-100 text-sage-800 flex items-center justify-center mx-auto mb-1 font-serif font-bold text-xs">
                                 AR
                             </div>
-                            <h4 class="font-serif font-bold text-slate-800 text-base">Abdul Rahim</h4>
-                            <p class="text-[11px] text-sage-600 uppercase tracking-wider">Bapa Pengantin</p>
+                            <h4 class="font-serif font-bold text-slate-800 text-sm">Abdul Rahim</h4>
+                            <p class="text-[10px] text-sage-600 uppercase tracking-wider">Bapa Pengantin</p>
                         </div>
                         <div class="flex gap-2 justify-center pt-2 border-t border-sage-100">
-                            <a href="tel:0123456789" class="flex-1 bg-sage-100 hover:bg-sage-200 text-sage-800 py-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition-colors">
+                            <a href="tel:0123456789" class="flex-1 bg-sage-100 hover:bg-sage-200 text-sage-800 py-1.5 rounded-lg text-[11px] font-semibold flex items-center justify-center gap-1">
                                 <i class="fa-solid fa-phone"></i>
                                 <span>Panggil</span>
                             </a>
-                            <a href="https://wa.me/60123456789?text=Assalamualaikum%20Encik%20Abdul%20Rahim,%20saya%20inik%20bertanya%20mengenai%20majlis%20perkahwinan." target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition-colors">
+                            <a href="https://wa.me/60123456789" target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 rounded-lg text-[11px] font-semibold flex items-center justify-center gap-1">
                                 <i class="fa-brands fa-whatsapp"></i>
                                 <span>WhatsApp</span>
                             </a>
                         </div>
                     </div>
 
-                    <!-- Contact 2: Aminah -->
-                    <div class="glass-card p-4 rounded-2xl border border-gold-300/30 flex flex-col justify-between space-y-3">
+                    <!-- Contact 2 -->
+                    <div class="glass-card p-4 rounded-2xl border border-gold-300/30 flex flex-col justify-between space-y-2">
                         <div>
-                            <div class="w-10 h-10 rounded-full bg-blush-100 text-blush-500 flex items-center justify-center mx-auto mb-2 font-serif font-bold">
+                            <div class="w-9 h-9 rounded-full bg-blush-100 text-blush-500 flex items-center justify-center mx-auto mb-1 font-serif font-bold text-xs">
                                 AM
                             </div>
-                            <h4 class="font-serif font-bold text-slate-800 text-base">Aminah</h4>
-                            <p class="text-[11px] text-sage-600 uppercase tracking-wider">Ibu Pengantin</p>
+                            <h4 class="font-serif font-bold text-slate-800 text-sm">Aminah</h4>
+                            <p class="text-[10px] text-sage-600 uppercase tracking-wider">Ibu Pengantin</p>
                         </div>
                         <div class="flex gap-2 justify-center pt-2 border-t border-sage-100">
-                            <a href="tel:0198765432" class="flex-1 bg-sage-100 hover:bg-sage-200 text-sage-800 py-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition-colors">
+                            <a href="tel:0198765432" class="flex-1 bg-sage-100 hover:bg-sage-200 text-sage-800 py-1.5 rounded-lg text-[11px] font-semibold flex items-center justify-center gap-1">
                                 <i class="fa-solid fa-phone"></i>
                                 <span>Panggil</span>
                             </a>
-                            <a href="https://wa.me/60198765432?text=Assalamualaikum%20Puan%20Aminah,%20saya%20ingin%20bertanya%20mengenai%20majlis%20perkahwinan." target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1 transition-colors">
+                            <a href="https://wa.me/60198765432" target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-1.5 rounded-lg text-[11px] font-semibold flex items-center justify-center gap-1">
                                 <i class="fa-brands fa-whatsapp"></i>
                                 <span>WhatsApp</span>
                             </a>
@@ -551,54 +404,38 @@
             </div>
         </section>
 
+        <!-- Hiasan Sudut Bunga Bawah (Floral Corner Bottom) -->
+        <div class="floral-corner-bl"></div>
+        <div class="floral-corner-br"></div>
+
         <!-- FOOTER -->
-        <footer class="py-8 px-6 text-center space-y-3 bg-sage-800 text-white">
-            <h3 class="font-cursive text-4xl gold-gradient-text">Shahira Erna & Aiman</h3>
+        <footer class="py-6 px-6 text-center space-y-2 bg-sage-800 text-white">
+            <h3 class="font-cursive text-3xl gold-gradient-text">Shahira Erna & Aiman</h3>
             <p class="text-xs text-sage-200">Terima kasih atas doa restu anda semua.</p>
-            <div class="text-[10px] text-sage-400 pt-4 border-t border-sage-700">
-                Kad Kahwin Digital Interactive &bull; 2026
+            <div class="text-[10px] text-sage-400 pt-3 border-t border-sage-700">
+                Kad Kahwin Digital Interactive &bull; 2027
             </div>
         </footer>
     </div>
 
-    <!-- Custom Modal Toast -->
+    <!-- Navigation Bottom Bar -->
+    <nav class="f253-bottom-nav" aria-label="Menu kad kahwin">
+      <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"><i class="fa-solid fa-house"></i><span>Utama</span></a>
+      <a href="#event"><i class="fa-regular fa-calendar"></i><span>Tarikh</span></a>
+      <a href="#event"><i class="fa-regular fa-map"></i><span>Lokasi</span></a>
+      <a href="#contact"><i class="fa-regular fa-address-card"></i><span>Hubungi</span></a>
+      <a href="#rsvp"><i class="fa-regular fa-envelope"></i><span>RSVP</span></a>
+    </nav>
+
+    <!-- Toast Modal -->
     <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 transform -translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
-        <div id="toastBg" class="bg-sage-800 text-white px-5 py-3 rounded-full shadow-xl flex items-center gap-3 text-xs font-medium">
-            <i id="toastIcon" class="fa-solid fa-check-circle text-gold-400 text-base"></i>
+        <div id="toastBg" class="bg-sage-800 text-white px-4 py-2.5 rounded-full shadow-xl flex items-center gap-2 text-xs font-medium">
+            <i id="toastIcon" class="fa-solid fa-check-circle text-gold-400 text-sm"></i>
             <span id="toastMsg">Pesanan berjaya dihantar!</span>
         </div>
     </div>
 
     <script>
-        // Target Wedding Date (Sabtu, 12 Disember 2026 11:00 AM)
-        const weddingDate = new Date("2026-12-12T11:00:00").getTime();
-
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-
-            if (distance < 0) {
-                document.getElementById("cd-days").innerText = "00";
-                document.getElementById("cd-hours").innerText = "00";
-                document.getElementById("cd-minutes").innerText = "00";
-                document.getElementById("cd-seconds").innerText = "00";
-                return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("cd-days").innerText = days < 10 ? '0' + days : days;
-            document.getElementById("cd-hours").innerText = hours < 10 ? '0' + hours : hours;
-            document.getElementById("cd-minutes").innerText = minutes < 10 ? '0' + minutes : minutes;
-            document.getElementById("cd-seconds").innerText = seconds < 10 ? '0' + seconds : seconds;
-        }
-
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
         function togglePaxInput() {
             const status = document.getElementById("rsvpStatus").value;
             const paxContainer = document.getElementById("paxContainer");
@@ -613,32 +450,20 @@
             const toast = document.getElementById("toast");
             const toastMsg = document.getElementById("toastMsg");
             const toastBg = document.getElementById("toastBg");
-            const toastIcon = document.getElementById("toastIcon");
 
             toastMsg.innerText = message;
-            if (isSuccess) {
-                toastBg.className = "bg-sage-800 text-white px-5 py-3 rounded-full shadow-xl flex items-center gap-3 text-xs font-medium";
-                toastIcon.className = "fa-solid fa-circle-check text-gold-400 text-base";
-            } else {
-                toastBg.className = "bg-rose-800 text-white px-5 py-3 rounded-full shadow-xl flex items-center gap-3 text-xs font-medium";
-                toastIcon.className = "fa-solid fa-circle-exclamation text-rose-300 text-base";
-            }
-
             toast.classList.remove("-translate-y-20", "opacity-0");
             toast.classList.add("translate-y-0", "opacity-100");
 
             setTimeout(() => {
                 toast.classList.remove("translate-y-0", "opacity-100");
                 toast.classList.add("-translate-y-20", "opacity-0");
-            }, 3500);
+            }, 3000);
         }
 
         function handleRSVP(e) {
             e.preventDefault();
             const name = document.getElementById("rsvpName").value.trim();
-            const status = document.getElementById("rsvpStatus").value;
-            const pax = document.getElementById("rsvpPax").value;
-
             if (name) {
                 showToast(`Terima kasih ${name}! RSVP anda telah direkodkan.`);
                 document.getElementById("rsvpForm").reset();
@@ -664,45 +489,9 @@
             if (status === "Hadir") {
                 msg += `*Jumlah Pax:* ${encodeURIComponent(pax)} orang%0A`;
             }
-            msg += `%0ATerima kasih.`;
 
-            // Default Host WhatsApp Number (Abdul Rahim)
             const whatsappUrl = `https://wa.me/60123456789?text=${msg}`;
             window.open(whatsappUrl, '_blank');
-        }
-
-        function addWish(e) {
-            e.preventDefault();
-            const name = document.getElementById("wishName").value.trim();
-            const message = document.getElementById("wishMessage").value.trim();
-
-            if (!name || !message) return;
-
-            const container = document.getElementById("wishesContainer");
-            const newWish = document.createElement("div");
-            newWish.className = "glass-card p-4 rounded-xl border border-sage-100 shadow-sm space-y-1 transform transition-all duration-300 scale-95 opacity-0";
-            
-            newWish.innerHTML = `
-                <div class="flex justify-between items-center">
-                    <span class="font-serif font-bold text-slate-800 text-sm">${escapeHtml(name)}</span>
-                    <span class="text-[10px] text-slate-400">Baru Sahaja</span>
-                </div>
-                <p class="text-xs text-slate-600 italic">"${escapeHtml(message)}"</p>
-            `;
-
-            container.prepend(newWish);
-
-            setTimeout(() => {
-                newWish.classList.remove("scale-95", "opacity-0");
-                newWish.classList.add("scale-100", "opacity-100");
-            }, 50);
-
-            showToast("Ucapan anda telah berjaya disimpan!");
-            document.getElementById("wishForm").reset();
-        }
-
-        function escapeHtml(str) {
-            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
         }
 
         function addToCalendar() {
@@ -712,10 +501,10 @@
                 'PRODID:-//Walimatulurus Shahira & Aiman//MY',
                 'BEGIN:VEVENT',
                 'SUMMARY:Walimatulurus Shahira Erna & Aiman Mustaqim',
-                'DESCRIPTION:Majlis Perkahwinan Shahira Erna & Aiman (Anakanda Abdul Rahim & Aminah)',
-                'LOCATION:Dewan Grand Ballroom Seri Endon, Putrajaya',
-                'DTSTART:20261212T030000Z',
-                'DTEND:20261212T080000Z',
+                'DESCRIPTION:Majlis Perkahwinan Shahira Erna & Aiman Mustaqim',
+                'LOCATION:Dewan Kejora Bandar Tenggara, Kulai, Johor',
+                'DTSTART:20270102T030000Z',
+                'DTEND:20270102T080000Z',
                 'END:VEVENT',
                 'END:VCALENDAR'
             ].join('\n');
@@ -732,110 +521,18 @@
 
         let audioCtx = null;
         let isPlaying = false;
-        let melodyTimeout = null;
 
         function toggleMusic() {
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            }
-
-            if (audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-
             isPlaying = !isPlaying;
-            const btn = document.getElementById("musicToggleBtn");
             const icon = document.getElementById("musicIcon");
-            const text = document.getElementById("musicText");
-
             if (isPlaying) {
                 icon.classList.add("animate-spin");
-                text.innerText = "Muzik: On";
-                playRomanticMelody();
-                showToast("Muzik latar dimainkan 🎵");
+                showToast("Muzik dimainkan 🎵");
             } else {
                 icon.classList.remove("animate-spin");
-                text.innerText = "Muzik: Off";
-                if (melodyTimeout) clearTimeout(melodyTimeout);
                 showToast("Muzik dihentikan");
             }
         }
-
-        // Soft acoustic chord progression generator
-        const notes = {
-            'C4': 261.63, 'D4': 293.66, 'E4': 329.63, 'G4': 392.00,
-            'A4': 440.00, 'B4': 493.88, 'C5': 523.25, 'D5': 587.33, 'E5': 659.25
-        };
-
-        const melodySequence = [
-            { note: 'E4', duration: 0.6 },
-            { note: 'G4', duration: 0.6 },
-            { note: 'C5', duration: 1.2 },
-            { note: 'B4', duration: 0.6 },
-            { note: 'A4', duration: 0.6 },
-            { note: 'G4', duration: 1.2 },
-            { note: 'E4', duration: 0.6 },
-            { note: 'F4', duration: 0.6 },
-            { note: 'A4', duration: 1.2 },
-            { note: 'G4', duration: 1.8 }
-        ];
-
-        let noteIdx = 0;
-
-        function playNote(freq, duration) {
-            if (!isPlaying || !audioCtx) return;
-
-            try {
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-
-                osc.type = 'sine'; // Soft warm tone
-                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
-                // Smooth envelope
-                gain.gain.setValueAtTime(0, audioCtx.currentTime);
-                gain.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 0.1);
-                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
-
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-
-                osc.start();
-                osc.stop(audioCtx.currentTime + duration);
-            } catch(e) {
-                console.error(e);
-            }
-        }
-
-        function playRomanticMelody() {
-            if (!isPlaying) return;
-
-            const item = melodySequence[noteIdx];
-            if (notes[item.note]) {
-                playNote(notes[item.note], item.duration);
-            }
-
-            noteIdx = (noteIdx + 1) % melodySequence.length;
-            melodyTimeout = setTimeout(playRomanticMelody, item.duration * 1000);
-        }
-
-        // Auto play hint on first touch/click
-        window.addEventListener('click', function initialTouch() {
-            if (!audioCtx && !isPlaying) {
-                // Audio Context ready for user gesture
-            }
-            window.removeEventListener('click', initialTouch);
-        }, { once: true });
     </script>
-
-    <nav class="f253-bottom-nav" aria-label="Menu kad kahwin">
-      <a href="#musicToggleBtn" onclick="document.getElementById('musicToggleBtn')?.click(); return false;"><i class="fa-regular fa-circle-play"></i><span>Muzik</span></a>
-      <a href="#event" onclick="window.print(); return false;"><i class="fa-regular fa-calendar"></i><span>Kalendar</span></a>
-      <a href="#wishes"><i class="fa-regular fa-envelope-open"></i><span>Salam Kasih</span></a>
-      <a href="#event"><i class="fa-regular fa-map"></i><span>Lokasi</span></a>
-      <a href="#contact"><i class="fa-regular fa-address-card"></i><span>Hubungi</span></a>
-      <a href="#rsvp"><i class="fa-regular fa-envelope"></i><span>RSVP</span></a>
-    </nav>
-
 </body>
 </html>
